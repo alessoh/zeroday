@@ -166,13 +166,9 @@ export default function PipelineForm({
       ) : (
         <button
           type="submit"
-          disabled={!isFormValid && touched.repoUrl && touched.cveId}
-          className={`w-full py-3 px-6 text-white font-mono font-bold text-xs uppercase tracking-widest
-                     rounded-lg transition-all shadow-sm hover:shadow ${
-                       isFormValid
-                         ? "bg-emerald-600 hover:bg-emerald-700 active:bg-emerald-800"
-                         : "bg-emerald-600 hover:bg-emerald-700"
-                     }`}
+          className="w-full py-3 px-6 bg-emerald-600 hover:bg-emerald-700 active:bg-emerald-800 text-white
+                     font-mono font-bold text-xs uppercase tracking-widest
+                     rounded-lg transition-all shadow-sm hover:shadow"
         >
           ▶ Start Pipeline
         </button>
