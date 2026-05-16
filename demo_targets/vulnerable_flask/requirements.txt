@@ -1,0 +1,12 @@
+# DELIBERATELY VULNERABLE — for ZeroDay demo purposes only.
+# pydantic 1.10.0 contains CVE-2024-3772: a regular-expression
+# denial-of-service (ReDoS) vulnerability in the EmailStr validator.
+# The fix is to upgrade to pydantic>=2.7.1 (or pydantic>=1.10.14 on the
+# 1.x line, but the 1.x branch is end-of-life).
+flask==3.0.3
+pydantic==1.10.0
+email-validator==1.3.1
+
+# Test dependencies
+pytest==8.2.2
+pytest-flask==1.3.0

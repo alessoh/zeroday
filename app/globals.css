@@ -1,0 +1,99 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,500;0,700;1,400&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    font-family: 'JetBrains Mono', 'Fira Code', ui-monospace, SFMono-Regular, monospace;
+  }
+
+  body {
+    @apply bg-zinc-950 text-zinc-100 antialiased;
+  }
+
+  ::selection {
+    @apply bg-emerald-700 text-white;
+  }
+
+  ::-webkit-scrollbar {
+    @apply w-1.5 h-1.5;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-zinc-900;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-zinc-700 rounded-full;
+  }
+}
+
+/* Markdown rendering inside ResultsPanel */
+.md h1,
+.md h2,
+.md h3,
+.md h4 {
+  @apply text-zinc-100 font-bold mt-5 mb-2;
+}
+
+.md h1 { @apply text-xl; }
+.md h2 { @apply text-lg; }
+.md h3 { @apply text-base; }
+
+.md p {
+  @apply text-zinc-300 mb-3 leading-relaxed;
+}
+
+.md ul {
+  @apply text-zinc-300 mb-3 ml-5 list-disc space-y-1;
+}
+
+.md ol {
+  @apply text-zinc-300 mb-3 ml-5 list-decimal space-y-1;
+}
+
+.md li {
+  @apply leading-relaxed;
+}
+
+.md code {
+  @apply bg-zinc-800 text-emerald-300 px-1.5 py-0.5 rounded text-sm;
+}
+
+.md pre {
+  @apply bg-zinc-800 p-4 rounded-lg overflow-x-auto mb-3;
+}
+
+.md pre code {
+  @apply bg-transparent p-0 text-zinc-200;
+}
+
+.md a {
+  @apply text-emerald-400 underline underline-offset-2 hover:text-emerald-300;
+}
+
+.md blockquote {
+  @apply border-l-2 border-zinc-600 pl-4 text-zinc-400 italic mb-3;
+}
+
+.md table {
+  @apply w-full border-collapse mb-3 text-sm;
+}
+
+.md th {
+  @apply border border-zinc-700 px-3 py-2 bg-zinc-800 text-zinc-200 text-left;
+}
+
+.md td {
+  @apply border border-zinc-700 px-3 py-2 text-zinc-300;
+}
+
+.md hr {
+  @apply border-zinc-700 my-4;
+}
+
+.md strong {
+  @apply text-zinc-100 font-semibold;
+}
