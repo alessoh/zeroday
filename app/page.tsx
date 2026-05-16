@@ -152,12 +152,12 @@ export default function Home() {
   }, []);
 
   return (
-    <main className="min-h-screen bg-gray-50">
+    <main className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100">
       <div className="max-w-3xl mx-auto px-4 py-14">
         {/* ── Header ── */}
         <header className="mb-12 text-center">
           <div className="inline-flex items-center gap-2 mb-1">
-            <span className="text-emerald-500 text-2xl select-none">⬡</span>
+            <span className="text-emerald-500 text-2xl select-none animate-pulse-subtle">⬡</span>
             <h1 className="text-4xl font-mono font-bold tracking-tight text-gray-900">
               ZeroDay
             </h1>
@@ -176,14 +176,44 @@ export default function Home() {
 
         {/* ── Global error banner (network / server errors) ── */}
         {globalError && !isRunning && (
-          <div className="mt-4 px-4 py-3 bg-red-50 border border-red-300 rounded-lg text-red-700 text-sm font-mono">
-            {globalError}
+          <div className="mt-4 px-4 py-3 bg-red-50 border border-red-300 rounded-lg text-red-700 text-sm font-mono animate-fade-in">
+            ⚠ {globalError}
+          </div>
+        )}
+
+        {/* ── Empty State (before first run) ── */}
+        {!hasRun && !isRunning && (
+          <div className="mt-12 text-center animate-fade-in">
+            <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-emerald-100 mb-4">
+              <span className="text-2xl">🚀</span>
+            </div>
+            <h3 className="text-lg font-semibold text-gray-800 mb-2">
+              Ready to Patch Vulnerabilities
+            </h3>
+            <p className="text-sm text-gray-600 max-w-md mx-auto leading-relaxed">
+              Enter a GitHub repository URL and CVE identifier above to automatically
+              generate a security patch with pull request description.
+            </p>
+            <div className="mt-6 flex items-center justify-center gap-8 text-xs text-gray-500">
+              <div className="flex items-center gap-2">
+                <span className="text-emerald-500">✓</span>
+                <span>NVD Advisory Parsing</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <span className="text-emerald-500">✓</span>
+                <span>Reachability Analysis</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <span className="text-emerald-500">✓</span>
+                <span>AI-Powered Patching</span>
+              </div>
+            </div>
           </div>
         )}
 
         {/* ── Pipeline Progress ── */}
         {hasRun && (
-          <div className="mt-6">
+          <div className="mt-6 animate-fade-in">
             <ProgressPanel
               stages={stages}
               isRunning={isRunning}

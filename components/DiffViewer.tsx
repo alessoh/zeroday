@@ -10,12 +10,12 @@ function classifyLine(line: string): LineType {
   return "context";
 }
 
-const LINE_BG: Record<LineType, string> = {
-  add: "bg-emerald-50 text-emerald-800",
-  remove: "bg-red-50 text-red-800",
-  hunk: "bg-blue-50 text-blue-700",
-  header: "text-gray-500",
-  context: "text-gray-700",
+const LINE_STYLES: Record<LineType, string> = {
+  add: "bg-emerald-50 text-emerald-900 border-l-2 border-emerald-400",
+  remove: "bg-red-50 text-red-900 border-l-2 border-red-400",
+  hunk: "bg-blue-50 text-blue-800 font-semibold border-l-2 border-blue-300",
+  header: "bg-gray-50 text-gray-600 font-semibold border-l-2 border-gray-300",
+  context: "text-gray-700 hover:bg-gray-50",
 };
 
 interface DiffViewerProps {
@@ -34,16 +34,23 @@ export default function DiffViewer({ patch }: DiffViewerProps) {
   const lines = patch.split("\n");
 
   return (
-    <div className="overflow-x-auto">
-      <pre className="text-xs leading-5 font-mono">
+    <div className="overflow-x-auto bg-gray-900">
+      <pre className="text-[13px] leading-6 font-mono">
         {lines.map((line, i) => {
           const type = classifyLine(line);
+          const lineNumber = i + 1;
+          
           return (
             <div
               key={i}
-              className={`px-5 py-px whitespace-pre ${LINE_BG[type]}`}
+              className={`flex hover:bg-opacity-80 transition-colors ${LINE_STYLES[type]}`}
             >
-              {line || " "}
+              <span className="inline-block w-12 flex-shrink-0 text-right pr-3 text-gray-400 select-none text-xs">
+                {lineNumber}
+              </span>
+              <span className="flex-1 px-3 whitespace-pre">
+                {line || " "}
+              </span>
             </div>
           );
         })}
