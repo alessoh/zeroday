@@ -35,7 +35,7 @@ export default function ElapsedTimer({
   const seconds = (elapsed / 1000).toFixed(2);
 
   return (
-    <span className="font-mono text-xs tabular-nums text-zinc-500">
+    <span className="font-mono text-xs tabular-nums text-gray-500">
       {seconds}s
     </span>
   );

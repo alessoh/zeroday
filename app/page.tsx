@@ -152,18 +152,18 @@ export default function Home() {
   }, []);
 
   return (
-    <main className="min-h-screen bg-zinc-950">
+    <main className="min-h-screen bg-gray-50">
       <div className="max-w-3xl mx-auto px-4 py-14">
         {/* ── Header ── */}
         <header className="mb-12 text-center">
           <div className="inline-flex items-center gap-2 mb-1">
             <span className="text-emerald-500 text-2xl select-none">⬡</span>
-            <h1 className="text-4xl font-mono font-bold tracking-tight text-zinc-50">
+            <h1 className="text-4xl font-mono font-bold tracking-tight text-gray-900">
               ZeroDay
             </h1>
           </div>
-          <p className="mt-1 text-xs font-mono text-zinc-500 uppercase tracking-[0.25em]">
-            CVE Patch Sprinter
+          <p className="mt-1 text-xs font-mono text-gray-500 uppercase tracking-[0.25em]">
+            From zero-day to PR, automatically.
           </p>
         </header>
 
@@ -176,7 +176,7 @@ export default function Home() {
 
         {/* ── Global error banner (network / server errors) ── */}
         {globalError && !isRunning && (
-          <div className="mt-4 px-4 py-3 bg-red-950 border border-red-800 rounded-lg text-red-300 text-sm font-mono">
+          <div className="mt-4 px-4 py-3 bg-red-50 border border-red-300 rounded-lg text-red-700 text-sm font-mono">
             {globalError}
           </div>
         )}

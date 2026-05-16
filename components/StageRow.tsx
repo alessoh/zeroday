@@ -9,7 +9,7 @@ interface StageRowProps {
 function StatusIcon({ status }: { status: StageStatus }) {
   if (status === "pending") {
     return (
-      <span className="text-zinc-700 text-base leading-none select-none">
+      <span className="text-gray-300 text-base leading-none select-none">
         ○
       </span>
     );
@@ -17,7 +17,7 @@ function StatusIcon({ status }: { status: StageStatus }) {
   if (status === "running") {
     return (
       <span
-        className="inline-block w-3.5 h-3.5 border-2 border-amber-400 border-t-transparent
+        className="inline-block w-3.5 h-3.5 border-2 border-amber-500 border-t-transparent
                    rounded-full animate-spin"
         aria-label="running"
       />
@@ -25,23 +25,23 @@ function StatusIcon({ status }: { status: StageStatus }) {
   }
   if (status === "complete") {
     return (
-      <span className="text-emerald-400 text-base leading-none font-bold select-none">
+      <span className="text-emerald-500 text-base leading-none font-bold select-none">
         ✓
       </span>
     );
   }
   return (
-    <span className="text-red-400 text-base leading-none font-bold select-none">
+    <span className="text-red-500 text-base leading-none font-bold select-none">
       ✗
     </span>
   );
 }
 
 const LABEL_COLOR: Record<StageStatus, string> = {
-  pending: "text-zinc-600",
-  running: "text-amber-300",
-  complete: "text-zinc-200",
-  error: "text-red-300",
+  pending: "text-gray-400",
+  running: "text-amber-700",
+  complete: "text-gray-800",
+  error: "text-red-600",
 };
 
 export default function StageRow({ stage }: StageRowProps) {
@@ -56,7 +56,7 @@ export default function StageRow({ stage }: StageRowProps) {
           {stage.label}
         </span>
         {stage.message && (
-          <span className="text-xs text-zinc-600 font-mono truncate">
+          <span className="text-xs text-gray-400 font-mono truncate">
             — {stage.message}
           </span>
         )}

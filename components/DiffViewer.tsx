@@ -11,11 +11,11 @@ function classifyLine(line: string): LineType {
 }
 
 const LINE_BG: Record<LineType, string> = {
-  add: "bg-emerald-950/60 text-emerald-300",
-  remove: "bg-red-950/60 text-red-300",
-  hunk: "bg-blue-950/60 text-blue-400",
-  header: "text-zinc-500",
-  context: "text-zinc-400",
+  add: "bg-emerald-50 text-emerald-800",
+  remove: "bg-red-50 text-red-800",
+  hunk: "bg-blue-50 text-blue-700",
+  header: "text-gray-500",
+  context: "text-gray-700",
 };
 
 interface DiffViewerProps {
@@ -25,7 +25,7 @@ interface DiffViewerProps {
 export default function DiffViewer({ patch }: DiffViewerProps) {
   if (!patch.trim()) {
     return (
-      <div className="px-5 py-4 text-zinc-600 text-sm font-mono italic">
+      <div className="px-5 py-4 text-gray-400 text-sm font-mono italic">
         No patch content.
       </div>
     );
@@ -43,7 +43,7 @@ export default function DiffViewer({ patch }: DiffViewerProps) {
               key={i}
               className={`px-5 py-px whitespace-pre ${LINE_BG[type]}`}
             >
-              {line || " "}
+              {line || " "}
             </div>
           );
         })}

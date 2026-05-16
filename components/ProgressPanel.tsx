@@ -28,18 +28,18 @@ export default function ProgressPanel({
   const dotColor = isRunning
     ? "bg-amber-400 animate-pulse"
     : allComplete
-    ? "bg-emerald-400"
+    ? "bg-emerald-500"
     : hasError
-    ? "bg-red-400"
-    : "bg-zinc-600";
+    ? "bg-red-500"
+    : "bg-gray-300";
 
   return (
-    <div className="bg-zinc-900 border border-zinc-800 rounded-xl overflow-hidden">
+    <div className="bg-white border border-gray-200 rounded-xl overflow-hidden shadow-sm">
       {/* Header bar */}
-      <div className="flex items-center justify-between px-5 py-3 border-b border-zinc-800">
+      <div className="flex items-center justify-between px-5 py-3 border-b border-gray-200">
         <div className="flex items-center gap-2">
           <span className={`inline-block w-2 h-2 rounded-full ${dotColor}`} />
-          <span className="font-mono text-[11px] text-zinc-500 uppercase tracking-widest">
+          <span className="font-mono text-[11px] text-gray-500 uppercase tracking-widest">
             Pipeline · {statusLabel}
           </span>
         </div>
@@ -51,7 +51,7 @@ export default function ProgressPanel({
       </div>
 
       {/* Stage rows */}
-      <div className="divide-y divide-zinc-800/60">
+      <div className="divide-y divide-gray-100">
         {stages.map((stage) => (
           <StageRow key={stage.id} stage={stage} />
         ))}

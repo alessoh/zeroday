@@ -44,18 +44,18 @@ export default function PipelineForm({
   }
 
   const inputBase =
-    "w-full bg-zinc-950 border rounded px-3 py-2.5 font-mono text-sm text-zinc-100 " +
-    "placeholder-zinc-600 focus:outline-none transition-colors disabled:opacity-40 " +
+    "w-full bg-white border rounded px-3 py-2.5 font-mono text-sm text-gray-900 " +
+    "placeholder-gray-400 focus:outline-none transition-colors disabled:opacity-40 " +
     "disabled:cursor-not-allowed";
 
   return (
     <form
       onSubmit={handleSubmit}
-      className="bg-zinc-900 border border-zinc-800 rounded-xl p-6 space-y-5"
+      className="bg-white border border-gray-200 rounded-xl p-6 space-y-5 shadow-sm"
     >
       {/* Repo URL */}
       <div>
-        <label className="block text-[11px] font-mono text-zinc-500 uppercase tracking-widest mb-1.5">
+        <label className="block text-[11px] font-mono text-gray-500 uppercase tracking-widest mb-1.5">
           GitHub Repository URL
         </label>
         <input
@@ -68,12 +68,12 @@ export default function PipelineForm({
           spellCheck={false}
           className={`${inputBase} ${
             errors.repoUrl
-              ? "border-red-700 focus:border-red-500"
-              : "border-zinc-700 focus:border-emerald-600"
+              ? "border-red-400 focus:border-red-500"
+              : "border-gray-300 focus:border-emerald-500"
           }`}
         />
         {errors.repoUrl && (
-          <p className="mt-1.5 text-xs text-red-400 font-mono">
+          <p className="mt-1.5 text-xs text-red-600 font-mono">
             {errors.repoUrl}
           </p>
         )}
@@ -81,7 +81,7 @@ export default function PipelineForm({
 
       {/* CVE ID */}
       <div>
-        <label className="block text-[11px] font-mono text-zinc-500 uppercase tracking-widest mb-1.5">
+        <label className="block text-[11px] font-mono text-gray-500 uppercase tracking-widest mb-1.5">
           CVE Identifier
         </label>
         <input
@@ -94,12 +94,12 @@ export default function PipelineForm({
           spellCheck={false}
           className={`${inputBase} ${
             errors.cveId
-              ? "border-red-700 focus:border-red-500"
-              : "border-zinc-700 focus:border-emerald-600"
+              ? "border-red-400 focus:border-red-500"
+              : "border-gray-300 focus:border-emerald-500"
           }`}
         />
         {errors.cveId && (
-          <p className="mt-1.5 text-xs text-red-400 font-mono">
+          <p className="mt-1.5 text-xs text-red-600 font-mono">
             {errors.cveId}
           </p>
         )}
@@ -110,8 +110,8 @@ export default function PipelineForm({
         <button
           type="button"
           onClick={onStop}
-          className="w-full py-3 px-6 bg-red-950 hover:bg-red-900 border border-red-800
-                     text-red-300 font-mono font-bold text-xs uppercase tracking-widest
+          className="w-full py-3 px-6 bg-red-600 hover:bg-red-700 text-white
+                     font-mono font-bold text-xs uppercase tracking-widest
                      rounded-lg transition-colors"
         >
           ■ Stop
@@ -119,8 +119,8 @@ export default function PipelineForm({
       ) : (
         <button
           type="submit"
-          className="w-full py-3 px-6 bg-emerald-950 hover:bg-emerald-900 border border-emerald-800
-                     text-emerald-300 font-mono font-bold text-xs uppercase tracking-widest
+          className="w-full py-3 px-6 bg-emerald-600 hover:bg-emerald-700 text-white
+                     font-mono font-bold text-xs uppercase tracking-widest
                      rounded-lg transition-colors"
         >
           ▶ Start

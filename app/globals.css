@@ -10,11 +10,11 @@
   }
 
   body {
-    @apply bg-zinc-950 text-zinc-100 antialiased;
+    @apply bg-gray-50 text-gray-900 antialiased;
   }
 
   ::selection {
-    @apply bg-emerald-700 text-white;
+    @apply bg-emerald-200 text-emerald-900;
   }
 
   ::-webkit-scrollbar {
@@ -22,11 +22,11 @@
   }
 
   ::-webkit-scrollbar-track {
-    @apply bg-zinc-900;
+    @apply bg-gray-100;
   }
 
   ::-webkit-scrollbar-thumb {
-    @apply bg-zinc-700 rounded-full;
+    @apply bg-gray-300 rounded-full;
   }
 }
 
@@ -35,7 +35,7 @@
 .md h2,
 .md h3,
 .md h4 {
-  @apply text-zinc-100 font-bold mt-5 mb-2;
+  @apply text-gray-900 font-bold mt-5 mb-2;
 }
 
 .md h1 { @apply text-xl; }
@@ -43,15 +43,15 @@
 .md h3 { @apply text-base; }
 
 .md p {
-  @apply text-zinc-300 mb-3 leading-relaxed;
+  @apply text-gray-700 mb-3 leading-relaxed;
 }
 
 .md ul {
-  @apply text-zinc-300 mb-3 ml-5 list-disc space-y-1;
+  @apply text-gray-700 mb-3 ml-5 list-disc space-y-1;
 }
 
 .md ol {
-  @apply text-zinc-300 mb-3 ml-5 list-decimal space-y-1;
+  @apply text-gray-700 mb-3 ml-5 list-decimal space-y-1;
 }
 
 .md li {
@@ -59,23 +59,23 @@
 }
 
 .md code {
-  @apply bg-zinc-800 text-emerald-300 px-1.5 py-0.5 rounded text-sm;
+  @apply bg-gray-100 text-emerald-700 px-1.5 py-0.5 rounded text-sm;
 }
 
 .md pre {
-  @apply bg-zinc-800 p-4 rounded-lg overflow-x-auto mb-3;
+  @apply bg-gray-100 p-4 rounded-lg overflow-x-auto mb-3;
 }
 
 .md pre code {
-  @apply bg-transparent p-0 text-zinc-200;
+  @apply bg-transparent p-0 text-gray-800;
 }
 
 .md a {
-  @apply text-emerald-400 underline underline-offset-2 hover:text-emerald-300;
+  @apply text-emerald-600 underline underline-offset-2 hover:text-emerald-700;
 }
 
 .md blockquote {
-  @apply border-l-2 border-zinc-600 pl-4 text-zinc-400 italic mb-3;
+  @apply border-l-2 border-gray-300 pl-4 text-gray-500 italic mb-3;
 }
 
 .md table {
@@ -83,17 +83,17 @@
 }
 
 .md th {
-  @apply border border-zinc-700 px-3 py-2 bg-zinc-800 text-zinc-200 text-left;
+  @apply border border-gray-200 px-3 py-2 bg-gray-50 text-gray-700 text-left;
 }
 
 .md td {
-  @apply border border-zinc-700 px-3 py-2 text-zinc-300;
+  @apply border border-gray-200 px-3 py-2 text-gray-600;
 }
 
 .md hr {
-  @apply border-zinc-700 my-4;
+  @apply border-gray-200 my-4;
 }
 
 .md strong {
-  @apply text-zinc-100 font-semibold;
+  @apply text-gray-900 font-semibold;
 }
