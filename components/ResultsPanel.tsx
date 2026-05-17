@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import DiffViewer from "./DiffViewer";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
@@ -10,12 +11,58 @@ interface ResultsPanelProps {
   result: PipelineResult;
 }
 
-function SectionHeader({ children }: { children: React.ReactNode }) {
+function SectionHeader({
+  children,
+  onCopy
+}: {
+  children: React.ReactNode;
+  onCopy?: () => void;
+}) {
   return (
-    <div className="px-5 py-3 border-b border-gray-200 bg-gray-50">
+    <div className="px-5 py-3 border-b border-gray-200 bg-gray-50 flex items-center justify-between">
       <span className="font-mono text-[11px] text-gray-500 uppercase tracking-widest">
         {children}
       </span>
+      {onCopy && (
+        <button
+          onClick={onCopy}
+          className="px-3 py-1.5 text-xs font-mono font-semibold text-emerald-700 bg-emerald-50
+                     hover:bg-emerald-100 border border-emerald-200 rounded transition-colors"
+        >
+          📋 Copy
+        </button>
+      )}
+    </div>
+  );
+}
+
+function NextStepBanner() {
+  return (
+    <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-5 animate-fade-in">
+      <div className="flex items-start gap-3">
+        <span className="text-2xl flex-shrink-0">💡</span>
+        <div>
+          <h3 className="font-mono font-semibold text-blue-900 text-sm mb-1">
+            Next Step
+          </h3>
+          <p className="text-sm text-blue-800 leading-relaxed">
+            Copy the patch below and the PR description, then create a pull request in your
+            repository to apply the fix. The production version of ZeroDay would open the PR
+            automatically via the GitHub API.
+          </p>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function CopyConfirmation({ show }: { show: boolean }) {
+  if (!show) return null;
+  
+  return (
+    <div className="fixed top-4 right-4 bg-emerald-600 text-white px-4 py-2 rounded-lg shadow-lg
+                    font-mono text-sm font-semibold animate-fade-in z-50">
+      ✓ Copied!
     </div>
   );
 }
@@ -145,17 +192,49 @@ const markdownComponents: Components = {
 };
 
 export default function ResultsPanel({ result }: ResultsPanelProps) {
+  const [showPatchCopied, setShowPatchCopied] = useState(false);
+  const [showPrCopied, setShowPrCopied] = useState(false);
+
+  const handleCopyPatch = async () => {
+    try {
+      await navigator.clipboard.writeText(result.patch);
+      setShowPatchCopied(true);
+      setTimeout(() => setShowPatchCopied(false), 2000);
+    } catch (err) {
+      console.error("Failed to copy patch:", err);
+    }
+  };
+
+  const handleCopyPr = async () => {
+    try {
+      await navigator.clipboard.writeText(result.prDescription);
+      setShowPrCopied(true);
+      setTimeout(() => setShowPrCopied(false), 2000);
+    } catch (err) {
+      console.error("Failed to copy PR description:", err);
+    }
+  };
+
   return (
     <div className="space-y-5 animate-fade-in">
+      {/* Copy confirmation toasts */}
+      <CopyConfirmation show={showPatchCopied} />
+      <CopyConfirmation show={showPrCopied} />
+
+      {/* Next Step Banner */}
+      <NextStepBanner />
+
       {/* Generated Patch */}
       <div className="bg-white border border-gray-200 rounded-xl overflow-hidden shadow-sm">
-        <SectionHeader>Generated Patch</SectionHeader>
+        <SectionHeader onCopy={handleCopyPatch}>
+          Generated Patch
+        </SectionHeader>
         <DiffViewer patch={result.patch} />
       </div>
 
       {/* Pull Request */}
       <div className="bg-white border border-gray-200 rounded-xl overflow-hidden shadow-sm">
-        <SectionHeader>
+        <SectionHeader onCopy={handleCopyPr}>
           {result.prTitle ? `Pull Request — ${result.prTitle}` : "Pull Request"}
         </SectionHeader>
         <div className="px-6 py-5 prose prose-sm max-w-none">
